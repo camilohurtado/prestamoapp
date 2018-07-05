@@ -1,0 +1,13 @@
+page-conequipos {
+    .interna{
+
+        button:nth-child(odd){
+            background-color: #d7f1d2;
+        }
+        button:nth-child(even){
+            background-color: #ECEDEF;
+        }
+
+
+    }
+}

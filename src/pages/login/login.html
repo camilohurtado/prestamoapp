@@ -1,0 +1,33 @@
+<ion-header>
+  
+  <ion-navbar>
+    <ion-title>Ingreso</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+    <ion-item text-center>
+        <ion-img width="180" height="180" src="assets/imgs/logo193.png"></ion-img>
+   </ion-item>
+
+<ion-item>   
+  <ion-icon name="person" item-left></ion-icon>
+  <ion-label floating>Usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+</ion-item>
+
+
+<ion-item>
+    <ion-icon name="key" item-left></ion-icon>
+  <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+</ion-item>
+
+<button ion-button full (click)="validarLogin()">Ingresar</button>
+
+</ion-content>
