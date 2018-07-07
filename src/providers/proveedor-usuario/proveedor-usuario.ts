@@ -13,10 +13,12 @@ import { ProveedorSessionProvider } from '../proveedor-session/proveedor-session
 @Injectable()
 export class ProveedorUsuarioProvider {
 
-  private urlLogin: string = "http://192.168.1.58/login_user_oracle_get.php";
-  private urlperfiles: string = "http://192.168.1.58/perfiles_user_get.php";
-  private urlconequipos: string = "http://192.168.1.58/consulta_equipos.php";
-  private urlequipo: string = "http://192.168.1.58/trae_equipo_get.php";
+  private urlLogin: string = "http://192.168.1.49/login_user_oracle_get.php";
+  private urlperfiles: string = "http://192.168.1.49/perfiles_user_get.php";
+  private urlconequipos: string = "http://192.168.1.49/consulta_equipos.php";
+  private urlequipo: string = "http://192.168.1.49/trae_equipo_get.php";
+  private urlcrudequipo: string = "http://192.168.1.49/gestiona_equipo_get.php";
+
   constructor(public http:Http, public session:ProveedorSessionProvider) {
     console.log('Hello ProveedorUsuarioProvider Provider');
   }
@@ -52,6 +54,29 @@ export class ProveedorUsuarioProvider {
 
       return this.http.get(this.urlequipo,
         { params: { codigo_equipo: cod_equipo} })
+        .map(res => res.json());
+    }
+
+    utilizaCrudEquipo(unaOperacion: any,
+      unCodigo_equipo: any,
+      unaDesc_equipo: any,
+      unaReferencia: any,
+      unTipo_equipo: any,
+      unSerial: any,
+      unEstado) {
+  
+      return this.http.get(this.urlcrudequipo,
+        {
+          params: {
+            operacion: unaOperacion,
+            codigo_equipo: unCodigo_equipo,
+            desc_equipo: unaDesc_equipo,
+            referencia: unaReferencia,
+            tipo_equipo: unTipo_equipo,
+            serial: unSerial,
+            estado: unEstado
+          }
+        })
         .map(res => res.json());
     }
 

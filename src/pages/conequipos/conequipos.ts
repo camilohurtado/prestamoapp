@@ -29,10 +29,10 @@ export class ConequiposPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConequiposPage');
-    this.consultarEquipos();
+    this.llamarEquipos();
   }
 
-  consultarEquipos(){
+ /* consultarEquipos(){
 
     this.con.traerEquipos().subscribe(resultado => {
 
@@ -41,13 +41,26 @@ export class ConequiposPage {
       this.unosequipos = resultado;
 
      });
+  }*/
+
+  llamarEquipos(){
+    this.con.traerEquipos().subscribe(resultado => {
+      this.unosequipos=resultado;
+      console.log(this.unosequipos);
+     });  
   }
 
-  vaaequipo(equipo:any){
+  vaaequipo(equip:any){
+    console.log(equip);
+    this.navCtrl.push('equipos',{unequip:equip,una_accion:'ACTUALIZAR'});
+  }
 
-
-    this.navCtrl.push('equipos', {unequip:equipo});
-
+  creaEquipo(){
+    this.navCtrl.push('equipos',
+  {
+    unequip: -1,
+    una_accion: 'CREAR'
+  });
   }
 
 }

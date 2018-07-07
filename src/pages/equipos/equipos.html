@@ -7,41 +7,64 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>equipos</ion-title>
+    <ion-title>Equipo</ion-title>
   </ion-navbar>
+
+
+  <button ion-button full *ngIf="unaAccion === 'CREAR'" (click)="insertarEquipo()">Insertar Equipo</button>
+  <button ion-button clear block *ngIf="unaAccion === 'ACTUALIZAR'" (click)="actualizarEquipo()">Actualizar Equipo</button>
+  <button ion-button clear block *ngIf="unaAccion === 'ACTUALIZAR'" (click)="eliminarEquipo()">Eliminar Equipo</button>
+  <button ion-button clear block (click)="cancelarEquipo()">Cancelar</button>
+
 
 </ion-header>
 
 
 <ion-content padding>
 
-    <ion-card [(ngModel)]="datos_equipo">
+  <ion-item>
+    <ion-label floating>Equipo ID</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.EQUIPO_ID"></ion-input>
+  </ion-item>
 
-        <img src="assets/imgs/acer.jpg">
-    
-        <ion-card-content class="card-content card-content-md">
-          <ion-card-title class="card-title card-title-md">
-            Björk
-          </ion-card-title>
-          <p>
-            Björk first came to prominence as one of the lead vocalists of the avant pop Icelandic sextet the Sugarcubes, but when...
-          </p>
-        </ion-card-content>
-    
-        <ion-item class="item item-block item-md"><ion-icon item-start="" name="musical-notes" role="img" style="color: #d03e84" class="icon icon-md ion-md-musical-notes item-icon" aria-label="musical notes"></ion-icon><div class="item-inner"><div class="input-wrapper"><!----><ion-label class="label label-md">
-          
-          Albums
-          
-        </ion-label></div><ion-badge item-end="" class="badge badge-md">9</ion-badge><!----></div><div class="button-effect"></div></ion-item>
-    
-        <ion-item class="item item-block item-md"><ion-icon item-start="" name="logo-twitter" role="img" style="color: #55acee" class="icon icon-md ion-logo-twitter item-icon" aria-label="logo twitter"></ion-icon><div class="item-inner"><div class="input-wrapper"><!----><ion-label class="label label-md">
-          
-          Followers
-          
-        </ion-label></div><ion-badge item-end="" class="badge badge-md">260k</ion-badge><!----></div><div class="button-effect"></div></ion-item>
-    
-      </ion-card>
+  <ion-item>
+    <ion-label floating>Descripcion</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.DESCRIPCION"></ion-input>
+  </ion-item>
 
+  <ion-item>
+    <ion-label floating>Referencia</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.REFERENCIA"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Tipo Equipo ID</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.TIPO_EQUIPO_ID"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Serial</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.SERIAL"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Estado</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.ESTADO"></ion-input>
+  </ion-item> 
+
+  <ion-item>
+    <ion-label floating>Fecha Registro</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.FECHA_REG"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Foto</ion-label>
+      <ion-input type="text" [(ngModel)]="datos_equipo.FOTO"></ion-input>
+  </ion-item>
+
+  <!--
+  <button ion-button clear block (click)="salvaEquipo()">Salva Equipo</button>
+  -->
 
 
 </ion-content>
