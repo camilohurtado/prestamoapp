@@ -233,6 +233,7 @@ export class EquiposPage {
 
 
   cancelarEquipo() {
+    this.events.publish('reloadConEquipos');
     this.navCtrl.pop();
   }
 

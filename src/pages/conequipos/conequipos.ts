@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProveedorSessionProvider } from '../../providers/proveedor-session/proveedor-session';
 import { ProveedorUsuarioProvider } from '../../providers/proveedor-usuario/proveedor-usuario';
+import { Events } from 'ionic-angular';
 
 /**
  * Generated class for the ConequiposPage page.
@@ -25,13 +26,17 @@ export class ConequiposPage {
               public navParams: NavParams,
               public con:ProveedorUsuarioProvider, 
               public conf_usuario:ProveedorSessionProvider,
-              ) {
+              public events:Events) {
+
+                
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConequiposPage');
+    this.listenEvents();
     this.llamarEquipos();
+    
   }
 
   llamarEquipos(){
@@ -42,9 +47,6 @@ export class ConequiposPage {
   }
 
   vaaequipo(equip:any){
-    console.log('------VA A EQUIPO');
-    console.log(this.unosequipos);
-    console.log(equip);
     this.navCtrl.push('equipos',{unequip:equip,una_accion:'ACTUALIZAR'});
   }
 
@@ -55,5 +57,16 @@ export class ConequiposPage {
     una_accion: 'CREAR'
   });
   }
+  listenEvents(){
+    this.events.subscribe('reloadConEquipos',() => {
+     //call methods to refresh content
+     this.navCtrl.push('conequipos');
+     this.refresh();
+    });
+  }
+
+  refresh(): void {
+    window.location.reload();
+}
 
 }
