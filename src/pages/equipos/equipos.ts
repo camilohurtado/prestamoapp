@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { ProveedorUsuarioProvider } from '../../providers/proveedor-usuario/proveedor-usuario';
 import { ProveedorSessionProvider } from '../../providers/proveedor-session/proveedor-session';
 import { Equipo } from '../../models/modelo_equipos';
+import { Events } from 'ionic-angular'
 
 /**
  * Generated class for the EquiposPage page.
@@ -29,7 +30,8 @@ export class EquiposPage {
             public con:ProveedorUsuarioProvider, 
             public conf_usuario:ProveedorSessionProvider,
             public toastCtrl: ToastController,
-            public alertCtrl: AlertController) {
+            public alertCtrl: AlertController,
+            public events:Events) {
 
               this.equipo = this.navParams.get("unequip");
               this.unaAccion = this.navParams.get("una_accion");
@@ -60,19 +62,19 @@ export class EquiposPage {
 
   llamaunequipo(){
     this.con.traerUnEquipo(this.equipo.EQUIPO_ID).subscribe(res => {
-      console.log('respuesta de llamaunequipo camilo es una gueva ', res);
+      
       this.equipoBD=res;
 
-      this.datos_equipo.EQUIPO_ID             = this.equipo[0].EQUIPO_ID;
-      this.datos_equipo.DESCRIPCION           = this.equipo[0].DESC_EQUIPO;
-      this.datos_equipo.REFERENCIA            = this.equipo[0].REFERENCIA;
-      this.datos_equipo.TIPO_EQUIPO_ID        = this.equipo[0].TIPO_EQUIPO_ID;
-      this.datos_equipo.SERIAL                = this.equipo[0].SERIAL;
-      this.datos_equipo.ESTADO                = this.equipo[0].ESTADO;
-      this.datos_equipo.FECHA_REG             = this.equipo[0].FECHA_REG;
-      this.datos_equipo.FOTO                  = this.equipo[0].FOTO;
+      this.datos_equipo.EQUIPO_ID             = this.equipoBD[0].EQUIPO_ID;
+      this.datos_equipo.DESCRIPCION           = this.equipoBD[0].DESC_EQUIPO;
+      this.datos_equipo.REFERENCIA            = this.equipoBD[0].REFERENCIA;
+      this.datos_equipo.TIPO_EQUIPO_ID        = this.equipoBD[0].TIPO_EQUIPO_ID;
+      this.datos_equipo.SERIAL                = this.equipoBD[0].SERIAL;
+      this.datos_equipo.ESTADO                = this.equipoBD[0].ESTADO;
+      this.datos_equipo.FECHA_REG             = this.equipoBD[0].FECHA_REG;
+      this.datos_equipo.FOTO                  = this.equipoBD[0].FOTO;
 
-      console.log(this.equipo);
+      
     }, error => {
       console.log(error);
     });
@@ -105,7 +107,6 @@ export class EquiposPage {
 
 
   insertarEquipo() {
-    //this.datos_equipo.DESCRIPCION.length > 0
 
     if (this.datos_equipo.DESCRIPCION !== '' &&
       this.datos_equipo.REFERENCIA !== '' &&
@@ -124,7 +125,7 @@ export class EquiposPage {
         this.datos_equipo.ESTADO).subscribe(res => {
           //Aqui es resultado es cargado a la variable como JSON
           console.log('Inserta registro ws: ');
-          console.log(res);
+          console.log(res => res.json());
 
           if (res == "inserto registro") {
 
@@ -144,6 +145,89 @@ export class EquiposPage {
       console.log('No Puedo Insertar');
       this.showAlert('Error', 'Faltan Datos');
     }
+  }
+
+  actualizarEquipo(){
+
+    if (this.datos_equipo.DESCRIPCION !== '' &&
+      this.datos_equipo.REFERENCIA !== '' &&
+      this.datos_equipo.SERIAL !== '' &&
+      this.datos_equipo.TIPO_EQUIPO_ID > 0
+    ) {
+
+      //Aqui puedo realizar la insercion con los
+      //datos del la Pagina
+      this.con.utilizaCrudEquipo('A',
+        this.datos_equipo.EQUIPO_ID,
+        this.datos_equipo.DESCRIPCION,
+        this.datos_equipo.REFERENCIA,
+        this.datos_equipo.TIPO_EQUIPO_ID,
+        this.datos_equipo.SERIAL,
+        this.datos_equipo.ESTADO).subscribe(res => {
+          //Aqui es resultado es cargado a la variable como JSON
+
+          if (res == "Actualizo registro") {
+
+            this.mostrarToast('Registro Actualizado', 2000);
+
+            this.cancelarEquipo();
+          }
+          else {
+            this.mostrarToast('Registro  No Actualizado', 2000);
+          }
+
+        }, error => {
+          console.log(error);
+        });
+    }
+    else {
+      console.log('No Puedo Insertar');
+      this.showAlert('Error', 'Faltan Datos');
+    }
+
+
+
+  }
+
+  eliminarEquipo(){
+
+    if (this.datos_equipo.DESCRIPCION !== '' &&
+    this.datos_equipo.REFERENCIA !== '' &&
+    this.datos_equipo.SERIAL !== '' &&
+    this.datos_equipo.TIPO_EQUIPO_ID > 0
+  ) {
+
+    //Aqui puedo realizar la insercion con los
+    //datos del la Pagina
+    this.con.utilizaCrudEquipo('B',
+      this.datos_equipo.EQUIPO_ID,
+      this.datos_equipo.DESCRIPCION,
+      this.datos_equipo.REFERENCIA,
+      this.datos_equipo.TIPO_EQUIPO_ID,
+      this.datos_equipo.SERIAL,
+      this.datos_equipo.ESTADO).subscribe(res => {
+        //Aqui es resultado es cargado a la variable como JSON
+
+        if (res == "Elimino registro") {
+
+          this.mostrarToast('Registro eliminado', 2000);
+
+          this.cancelarEquipo();
+        }
+        else {
+          this.mostrarToast('Registro  No Eliminado', 2000);
+        }
+
+      }, error => {
+        console.log(error);
+      });
+  }
+  else {
+    console.log('No eliminar');
+    this.showAlert('Error', 'Faltan Datos');
+  }
+
+
   }
 
 

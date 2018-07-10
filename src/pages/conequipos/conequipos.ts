@@ -24,24 +24,15 @@ export class ConequiposPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public con:ProveedorUsuarioProvider, 
-              public conf_usuario:ProveedorSessionProvider) {
+              public conf_usuario:ProveedorSessionProvider,
+              ) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConequiposPage');
     this.llamarEquipos();
   }
-
- /* consultarEquipos(){
-
-    this.con.traerEquipos().subscribe(resultado => {
-
-      console.log(resultado);
-      console.log(resultado.length);
-      this.unosequipos = resultado;
-
-     });
-  }*/
 
   llamarEquipos(){
     this.con.traerEquipos().subscribe(resultado => {
@@ -51,6 +42,8 @@ export class ConequiposPage {
   }
 
   vaaequipo(equip:any){
+    console.log('------VA A EQUIPO');
+    console.log(this.unosequipos);
     console.log(equip);
     this.navCtrl.push('equipos',{unequip:equip,una_accion:'ACTUALIZAR'});
   }

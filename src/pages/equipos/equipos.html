@@ -52,7 +52,7 @@
       <ion-input type="text" [(ngModel)]="datos_equipo.ESTADO"></ion-input>
   </ion-item> 
 
-  <ion-item>
+  <ion-item *ngIf="unaAccion !== 'CREAR'">
     <ion-label floating>Fecha Registro</ion-label>
       <ion-input type="text" [(ngModel)]="datos_equipo.FECHA_REG"></ion-input>
   </ion-item>

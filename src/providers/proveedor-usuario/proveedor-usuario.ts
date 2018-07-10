@@ -51,10 +51,9 @@ export class ProveedorUsuarioProvider {
     }
 
     traerUnEquipo(cod_equipo:any){
+      console.log('traerUnEquipo: ' + cod_equipo);
+      return this.http.get(this.urlequipo,{ params:{codigo_equipo:cod_equipo}}).map(res => res.json());
 
-      return this.http.get(this.urlequipo,
-        { params: { codigo_equipo: cod_equipo} })
-        .map(res => res.json());
     }
 
     utilizaCrudEquipo(unaOperacion: any,
@@ -64,11 +63,23 @@ export class ProveedorUsuarioProvider {
       unTipo_equipo: any,
       unSerial: any,
       unEstado) {
-  
+      
+
+      console.log('UTILIZA CRUD EQUIPO');
+
+      console.log('unaOperacion', unaOperacion);
+      console.log('unCodigo_equipo', unCodigo_equipo);
+      console.log('unaDesc_equipo', unaDesc_equipo);
+      console.log('unaReferencia', unaReferencia);
+      console.log('unTipo_equipo', unTipo_equipo);
+      console.log('unSerial', unSerial);
+      console.log('unEstado', unEstado);
+      
+      
       return this.http.get(this.urlcrudequipo,
         {
           params: {
-            operacion: unaOperacion,
+            opera: unaOperacion,
             codigo_equipo: unCodigo_equipo,
             desc_equipo: unaDesc_equipo,
             referencia: unaReferencia,
