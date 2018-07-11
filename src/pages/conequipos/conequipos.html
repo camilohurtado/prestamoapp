@@ -23,14 +23,17 @@
         </ion-segment>
       </div>
       <button ion-button full (click)="creaEquipo()">Agregar un Nuevo Equipo</button>
+
+      <ion-searchbar [(ngModel)] = "busqueda" (keyup)="buscarEquipos()"></ion-searchbar>
+      <!--<button ion-button (click)="buscarEquipos()">Buscar</button>-->
       <div>
         <ion-list >
           <ion-item *ngFor="let equipo of unosequipos">
             <ion-thumbnail item-start>
-              <!--<img [src]="equipo.FOTO">-->
-              <img src="assets/imgs/acer.jpg">
+              <img [src]="equipo.FOTO2">
+              <!--<img src="assets/imgs/acer.jpg">-->
             </ion-thumbnail>
-            <button ion-item (click)="vaaequipo(equipo)"><h2>{{equipo.DESC_EQUIPO}} - {{equipo.DESC_TIPO_EQUIPO}}</h2></button>
+            <button ion-item (click)="vaaequipo(equipo)"><h2>{{equipo.EQUIPO_ID}} - {{equipo.DESC_EQUIPO}} : {{equipo.DESC_TIPO_EQUIPO}}</h2></button>
           </ion-item>
         </ion-list>
 

@@ -21,6 +21,7 @@ import { Events } from 'ionic-angular';
 export class ConequiposPage {
 
   public unosequipos:any;
+  public busqueda:any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -67,6 +68,21 @@ export class ConequiposPage {
 
   refresh(): void {
     window.location.reload();
+}
+
+buscarEquipos(){
+
+  if(this.busqueda === ''){
+    this.llamarEquipos();
+  }else{
+    this.con.traeBusquedaEquipos(this.busqueda).subscribe(resultado => {
+      this.unosequipos=resultado;
+      console.log(this.unosequipos);
+     });  
+  }
+
+  
+  
 }
 
 }

@@ -18,6 +18,7 @@ export class ProveedorUsuarioProvider {
   private urlconequipos: string = "http://192.168.1.49/consulta_equipos.php";
   private urlequipo: string = "http://192.168.1.49/trae_equipo_get.php";
   private urlcrudequipo: string = "http://192.168.1.49/gestiona_equipo_get.php";
+  private urlbusquedaequipos: string = "http://192.168.1.49/consulta_equipos_v1.php";
 
   constructor(public http:Http, public session:ProveedorSessionProvider) {
     console.log('Hello ProveedorUsuarioProvider Provider');
@@ -63,19 +64,7 @@ export class ProveedorUsuarioProvider {
       unTipo_equipo: any,
       unSerial: any,
       unEstado) {
-      
-
-      console.log('UTILIZA CRUD EQUIPO');
-
-      console.log('unaOperacion', unaOperacion);
-      console.log('unCodigo_equipo', unCodigo_equipo);
-      console.log('unaDesc_equipo', unaDesc_equipo);
-      console.log('unaReferencia', unaReferencia);
-      console.log('unTipo_equipo', unTipo_equipo);
-      console.log('unSerial', unSerial);
-      console.log('unEstado', unEstado);
-      
-      
+            
       return this.http.get(this.urlcrudequipo,
         {
           params: {
@@ -89,6 +78,15 @@ export class ProveedorUsuarioProvider {
           }
         })
         .map(res => res.json());
+    }
+
+    traeBusquedaEquipos(busqueda:any){
+
+      return this.http.get(this.urlbusquedaequipos,
+        { params: { una_descripcion: busqueda} })
+        .map(res => res.json());
+
+
     }
 
     
