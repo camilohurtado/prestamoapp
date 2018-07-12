@@ -31,7 +31,7 @@ export class PresentacionPage {
       description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
       image: "assets/imgs/ica-slidebox-img-3.png",
     }
-  
+
   ];
 
 
@@ -45,7 +45,7 @@ export class PresentacionPage {
 
   goLogin(){
 
-    this.navCtrl.push("login");
+    this.navCtrl.setRoot("login");
 
   }
 

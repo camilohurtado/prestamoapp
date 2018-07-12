@@ -11,6 +11,7 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { ProveedorSessionProvider } from '../providers/proveedor-session/proveedor-session';
 import { ProveedorUsuarioProvider } from '../providers/proveedor-usuario/proveedor-usuario';
 import { HttpModule } from '@angular/http';
+import { ServicesProvider } from '../providers/services/services';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProveedorSessionProvider,
-    ProveedorUsuarioProvider
+    ProveedorUsuarioProvider,
+    ServicesProvider
   ]
 })
 export class AppModule {}
