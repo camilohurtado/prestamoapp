@@ -29,13 +29,14 @@ export class ConequiposPage {
               public conf_usuario:ProveedorSessionProvider,
               public events:Events) {
 
-                
+                this.listenEvents();    
+                     
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConequiposPage');
-    this.listenEvents();
+    
     this.llamarEquipos();
     
   }
@@ -59,18 +60,26 @@ export class ConequiposPage {
   });
   }
   listenEvents(){
+
+    console.log('inside event');
     this.events.subscribe('reloadConEquipos',() => {
      //call methods to refresh content
-     this.navCtrl.push('conequipos');
-     this.refresh();
+     console.log(this.navCtrl.getActive);
+     //this.navCtrl.push('conequipos');
+     //this.navCtrl.pop();
+     //this.refresh();
     });
   }
 
   refresh(): void {
+    console.log('Inside refresh');
+    console.log(window.location);
     window.location.reload();
 }
 
 buscarEquipos(){
+  console.log('Buscar equipos');
+  console.log(this.busqueda);
 
   if(this.busqueda === ''){
     this.llamarEquipos();

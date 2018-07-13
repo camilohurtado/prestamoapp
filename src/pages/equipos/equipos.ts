@@ -169,7 +169,6 @@ export class EquiposPage {
           if (res == "Actualizo registro") {
 
             this.mostrarToast('Registro Actualizado', 2000);
-
             this.cancelarEquipo();
           }
           else {

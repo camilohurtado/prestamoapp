@@ -1,0 +1,75 @@
+<!--
+  Generated template for the PrestamoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Prestamo</ion-title>
+  </ion-navbar>
+
+  <button ion-button clear block *ngIf="unaAccion === 'CREAR'" (click)="insertarPrestamo()">Insertar Prestamo</button>
+  <button ion-button clear block *ngIf="unaAccion === 'ACTUALIZAR'" (click)="actualizarPrestamo()">Actualizar Prestamo</button>
+  <button ion-button clear block *ngIf="unaAccion === 'ACTUALIZAR'" (click)="eliminarPrestamo()">Eliminar Prestamo</button>
+  <button ion-button clear block (click)="cancelarPrestamo()">Cancelar</button>
+
+
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-label floating>Prestamo ID</ion-label>
+          <ion-input disabled="true" type="text" [(ngModel)]="datosPrestamo.PRESTAMO_ID"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Descripcion</ion-label>
+          <ion-input type="text" [(ngModel)]="datosPrestamo.OBSERVACION"></ion-input>
+      </ion-item>
+
+       <!--
+      <ion-item>
+        <ion-label floating>Fecha Hora</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="datosPrestamo.FECHA_HORA"></ion-datetime>
+      </ion-item>      
+-->
+      
+      <ion-item>
+        <ion-label floating>Fecha Hora</ion-label>
+          <ion-input type="text" [(ngModel)]="datosPrestamo.FECHA_HORA"></ion-input>
+      </ion-item>
+     
+
+      <ion-item>
+        <ion-label floating>Usuario ID</ion-label>
+          <ion-input disabled="true" type="text" [(ngModel)]="datosPrestamo.USU_PREST_ID"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Escenario ID</ion-label>
+          <ion-input type="text" [(ngModel)]="datosPrestamo.ESCENARIO_ID"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Estado</ion-label>
+          <ion-input type="text" [(ngModel)]="datosPrestamo.ESTADO_PREST"></ion-input>
+      </ion-item> 
+    
+      <ion-item>
+        <ion-label floating>Usuario ID Entre</ion-label>
+          <ion-input type="text" [(ngModel)]="datosPrestamo.USU_ENTRE_ID"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Hora Inicio</ion-label>
+          <ion-input type="text" [(ngModel)]="datosPrestamo.HORA_INICIO"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Hora Fin</ion-label>
+            <ion-input type="text" [(ngModel)]="datosPrestamo.HORA_FIN"></ion-input>
+        </ion-item>
+        
+</ion-content>
