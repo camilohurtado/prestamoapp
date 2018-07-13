@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'prestamos.html',
 })
 export class PrestamosPage {
+  private busqueda:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -25,7 +26,7 @@ export class PrestamosPage {
   }
 
 
-  creaPrestamo(){
+  crearPrestamo(){
     this.navCtrl.push('prestamo',
   {
     unprestamo: -1,
@@ -34,7 +35,9 @@ export class PrestamosPage {
   }
 
   vaaprestamo(prest:any){
-    this.navCtrl.push('equipos',{unprestamo:prest,una_accion:'ACTUALIZAR'});
+    this.navCtrl.push('prestamo',{unprestamo:prest,una_accion:'ACTUALIZAR'});
   }
+
+  buscarPrestamo(){}
 
 }
