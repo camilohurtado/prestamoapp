@@ -13,12 +13,12 @@ import { ProveedorSessionProvider } from '../proveedor-session/proveedor-session
 @Injectable()
 export class ProveedorUsuarioProvider {
 
-  private urlLogin: string = "http://192.168.1.49/login_user_oracle_get.php";
-  private urlperfiles: string = "http://192.168.1.49/perfiles_user_get.php";
-  private urlconequipos: string = "http://192.168.1.49/consulta_equipos.php";
-  private urlequipo: string = "http://192.168.1.49/trae_equipo_get.php";
-  private urlcrudequipo: string = "http://192.168.1.49/gestiona_equipo_get.php";
-  private urlbusquedaequipos: string = "http://192.168.1.49/consulta_equipos_v1.php";
+  private urlLogin: string = "http://192.168.1.37/login_user_oracle_get.php";
+  private urlperfiles: string = "http://192.168.1.37/perfiles_user_get.php";
+  private urlconequipos: string = "http://192.168.1.37/consulta_equipos.php";
+  private urlequipo: string = "http://192.168.1.37/trae_equipo_get.php";
+  private urlcrudequipo: string = "http://192.168.1.37/gestiona_equipo_get.php";
+  private urlbusquedaequipos: string = "http://192.168.1.37/consulta_equipos_v1.php";
 
   constructor(public http:Http, public session:ProveedorSessionProvider) {
     console.log('Hello ProveedorUsuarioProvider Provider');

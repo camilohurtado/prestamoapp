@@ -40,4 +40,25 @@ export class PrestamosPage {
 
   buscarPrestamo(){}
 
+  detallePrestamo(id :any){
+
+    this.busqueda = '%'
+    this.navCtrl.push('mov-prestamo', 
+    {
+      codigo_prestamo: id,
+      una_accion: 'ACTUALIZAR'
+    });
+
+  }
+
+  consultarPrestamo(id :any){
+
+    this.navCtrl.push('prestamo',
+    {
+      codigo_prestamo: id,
+      una_accion: 'ACTUALIZAR'
+    });
+
+  }
+
 }
