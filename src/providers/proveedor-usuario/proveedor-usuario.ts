@@ -19,6 +19,9 @@ export class ProveedorUsuarioProvider {
   private urlequipo: string = "http://192.168.1.37/trae_equipo_get.php";
   private urlcrudequipo: string = "http://192.168.1.37/gestiona_equipo_get.php";
   private urlbusquedaequipos: string = "http://192.168.1.37/consulta_equipos_v1.php";
+  private urlprestamos: string = "http://192.168.1.37/consulta_equipos_v1.php";
+  private urlcrudprestamo:string ="http://192.168.1.37/gestiona_prestamo_get.php";
+  private urlmovprestamo: string = "http://192.168.1.37/consulta_equipos_v1.php";
 
   constructor(public http:Http, public session:ProveedorSessionProvider) {
     console.log('Hello ProveedorUsuarioProvider Provider');
@@ -89,7 +92,59 @@ export class ProveedorUsuarioProvider {
 
     }
 
+    consultaPrestamo(busqueda:any){
+
+      return this.http.get(this.urlprestamos,
+        { params: { una_descripcion: busqueda} })
+        .map(res => res.json());
+
+
+    }
+
     
+    utilizaCrudPrestamo(unaOperacion: any,
+      codigo_prestamo: any,
+      unaobservacion: any,
+      unafechahora: any,
+      unusuprestid: any,
+      unescenarioid: any,
+      unEstadoprest:any,
+      unusuentreid: any,
+      unhorainicio:any,
+      unhorafin: any) {
+            
+      return this.http.get(this.urlcrudprestamo,
+        {
+          params: {
+            operacion: unaOperacion,
+            codigo_prestamo: codigo_prestamo,
+            obs_prestamo: unaobservacion,
+            fecha_hora: unafechahora,
+            usuario_prest_id: unusuprestid,
+            escenario_id: unescenarioid,
+            estado: unEstadoprest,
+            usurio_entre_id: unusuentreid,
+            hora_inicio:unhorainicio,
+            hora_fin:unhorafin
+
+          }
+        })
+        .map(res => res.json())
+
+
+
+
+
+    }
+
+
+    consultaMovPrestamo(busqueda:any){
+
+      return this.http.get(this.urlmovprestamo,
+        { params: { una_descripcion: busqueda} })
+        .map(res => res.json());
+
+    }
 
 
 }

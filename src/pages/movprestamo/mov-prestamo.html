@@ -1,0 +1,32 @@
+<!--
+  Generated template for the MovPrestamoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalle. Prestamo</ion-title>
+  </ion-navbar>
+
+  <button ion-button clear block (click)="creaDetalle()">Solicita Equipo</button>
+
+  <h2>{{unCodigoPrestamo}}</h2>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let movPrestamo of unosMovPrestamos">
+    <ion-item  >
+      <ion-thumbnail item-start>
+        <!--<img src="assets/imgs/thumbnail-rotla.png"> -->
+
+        <img src={{movPrestamo.URL_IMAGEN}}>
+      </ion-thumbnail>
+      <h2>{{movPrestamo.EQUIPO_ID}} {{movPrestamo.DESCRIPCION}}</h2>
+      <p>{{movPrestamo.FECHA_REGISTRO}} • </p>
+      <button ion-button clear item-end (click)="consultaDetalle(movPrestamo.MOV_PRESTAMO_ID)">View</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
