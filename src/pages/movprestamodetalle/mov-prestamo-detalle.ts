@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { MovPrestamo } from '../../models/movprestamo';
-import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { ProveedorUsuarioProvider } from '../../providers/proveedor-usuario/proveedor-usuario';
 
 /**
  * Generated class for the MovPrestamoDetallePage page.
@@ -38,7 +38,7 @@ export class MovPrestamoDetallePage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private con: UserServiceProvider,
+    private con: ProveedorUsuarioProvider,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController) {
 

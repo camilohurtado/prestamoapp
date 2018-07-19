@@ -19,7 +19,7 @@ export class ProveedorUsuarioProvider {
   private urlequipo: string = "http://192.168.1.37/trae_equipo_get.php";
   private urlcrudequipo: string = "http://192.168.1.37/gestiona_equipo_get.php";
   private urlbusquedaequipos: string = "http://192.168.1.37/consulta_equipos_v1.php";
-  private urlprestamos: string = "http://192.168.1.37/consulta_equipos_v1.php";
+  private urlprestamos: string = "http://192.168.1.37/consulta_prestamos.php";
   private urlcrudprestamo:string ="http://192.168.1.37/gestiona_prestamo_get.php";
   private urlmovprestamo: string = "http://192.168.1.37/consulta_equipos_v1.php";
 
@@ -92,10 +92,10 @@ export class ProveedorUsuarioProvider {
 
     }
 
-    consultaPrestamo(busqueda:any){
+    consultaPrestamos(busqueda:any){
 
       return this.http.get(this.urlprestamos,
-        { params: { una_descripcion: busqueda} })
+        { params: { codigo_usuario: busqueda} })
         .map(res => res.json());
 
 
